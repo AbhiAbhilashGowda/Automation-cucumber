@@ -1,87 +1,72 @@
-package com.tutorialsninja.automation.stepdef;
+package com.automation.stepdef;
 
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
-import com.tutorialsninja.automation.base.Base;
-import com.tutorialsninja.automation.framework.Elements;
-import com.tutorialsninja.automation.pages.LoginPage;
+import com.automation.base.Base;
+import com.automation.framework.Elements;
+import com.automation.pages.ScenarioAPage;
 
 import cucumber.api.java.en.*;
 
-public class Login {
+public class ScenarioA {
 	
-	LoginPage logPage = new LoginPage();
+	ScenarioAPage scenA = new ScenarioAPage();
 	
 	@Given("^I launch the application$")
-	public void i_launch_the_application(){
+	public void i_launch_the_application() throws InterruptedException{
 		
 		Base.driver.get(Base.reader.getUrl());
 		System.out.println("Launch the application");
-		
-	}
-
-	@And("^I click on My Account$")
-	public void i_click_on_My_Account(){
-		
-		Elements.click(LoginPage.myAccount);
-		System.out.println("I click on My Account");
-		
-	}
-
-	@And("^I click on Login$")
-	public void i_click_on_Login(){
-		
-		Elements.click(LoginPage.login);
-		System.out.println("I click on Login");
-		
-	}
-
-	@And("^I enter the Email Address \"([^\"]*)\"$")
-	public void i_enter_the_Email_Address(String arg1){
-		
-		Elements.TypeText(LoginPage.email, arg1);
-		System.out.println("I enter the Email Address");
-		
-	}
-
-	@And("^I enter the Password \"([^\"]*)\"$")
-	public void i_enter_the_Password(String arg1){
-		
-		Elements.TypeText(LoginPage.password, arg1);
-		System.out.println("I enter the Password");
+		Thread.sleep(5000);
 		
 	}
 	
-	@And("^I click on Login button$")
-	public void i_click_on_Login_button(){
+	@Then("^I navigate to Cell Phones and Accessories$")
+	public void i_navigate_to_Cell_Phones_and_Accessories() {
 		
-		Elements.click(LoginPage.loginButton);
-		System.out.println("I click on Login Button");
+		Elements.click(ScenarioAPage.shopByCategory);
+		Elements.click(ScenarioAPage.cellPhoneAndAccessories);
+				
 	}
 
-	@Then("^Login should be successful$")
-	public void login_should_be_successful(){
+	@Then("^I navigate to Cell Phones and Smartphone$")
+	public void i_navigate_to_Cell_Phones_and_Smartphone() {
 		
-		Assert.assertTrue(Elements.isDisplayed(LoginPage.loginSuccess));
-		System.out.println("Login Success");
+		Elements.click(ScenarioAPage.smartPhones);
 		
 	}
 	
-	@Then("^I view the products from the Wishlist$")
-	public void i_view_the_products_from_the_Wishlist(){
+	@Then("^I click on See All$")
+	public void i_click_on_See_All() {
 		
+		Elements.click(ScenarioAPage.seeAll);
 		
-		Elements.click(LoginPage.wishList);
-		System.out.println("I view the products form the WishList");
+	}
+	
+	@Then("^I apply the filters as ScreenSize$")
+	public void i_apply_the_filters_as_ScreenSize() {
+		
+		Elements.click(ScenarioAPage.screenSize);
+		Elements.click(ScenarioAPage.size1);
+		Elements.click(ScenarioAPage.size2);
+		Elements.click(ScenarioAPage.size3);
+		Elements.click(ScenarioAPage.size4);
+		Elements.click(ScenarioAPage.size5);
+		Elements.click(ScenarioAPage.size6);
+		
+		Elements.click(ScenarioAPage.applyFilter);
+		
 		
 	}
 
-	@Then("^I view the products from the Shopping Cart$")
-	public void i_view_the_products_from_the_Shopping_Cart(){
+	@Then("^I Verfy the filter tags applied$")
+	public void i_Verfy_the_filter_tags_applied() {
 		
-		Elements.click(LoginPage.shoppingCart);
-		System.out.println("I view the products from the shopping cart");
-		
+		Assert.assertTrue(Elements.isDisplayed(ScenarioAPage.filterSuccess));
+				
 	}
-
+	
 }
