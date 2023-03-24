@@ -1,9 +1,9 @@
-package com.tutorialsninja.automation.config;
+package com.automation.config;
 
 import java.io.IOException;
 import java.util.Properties;
 
-import com.tutorialsninja.automation.util.PathHelper;
+import com.automation.util.PathHelper;
 
 public class PropertyFileReader implements ConfigurationReader{
 	
@@ -41,4 +41,14 @@ public class PropertyFileReader implements ConfigurationReader{
 	public String getProduct() {
 		return properties.getProperty("Product");
 	}	
+	
+	public String getInvalidUsername() {
+		return properties.getProperty("InvalidUsername");
+	}
+
+	public String getInvalidPassword() {
+		return properties.getProperty("InvalidPassword");
+	}
+	
+	
 }

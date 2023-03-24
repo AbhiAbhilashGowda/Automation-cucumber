@@ -1,4 +1,4 @@
-package com.tutorialsninja.automation.config;
+package com.automation.config;
 
 public interface ConfigurationReader {
 	
@@ -7,6 +7,8 @@ public interface ConfigurationReader {
 	public int getPageLoadTimeOut();
 	public String getUsername();
 	public String getPassword();
-	public String getProduct();
+	public String getInvalidUsername();
+	public String getInvalidPassword();
+	
 	
 }
