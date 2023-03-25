@@ -51,6 +51,7 @@ public class uatlogin extends Base {
 	public void i_enter_invalid_password(String arg4) throws Throwable {
 		Thread.sleep(2000);
 		Elements.TypeText(uatloginPage2.invalidpassword, arg4);
+		Thread.sleep(2000);
 	}
 
 	@Then("^I should get the error message$")
